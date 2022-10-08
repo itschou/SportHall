@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
+
+    public const HOME = '/dashboard';
     /**
      * The event to listener mappings for the application.
      *
