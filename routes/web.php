@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,10 @@ use App\Http\Controllers\CustomAuthController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    $users = DB::table('users')->select('id','nom','prenom','age','email')->get();
+    return view('acceuil', compact('users'));
 });
+
 
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard'); 
