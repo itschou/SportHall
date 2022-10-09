@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\UserPaiementController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -28,12 +30,19 @@ Route::get('user', function(){
 
 Route::get('admin', function(){
     if(auth()->user()->role == "admin"){
-        return view('user');
+        $users = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->get();
+        $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
+        $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
+        // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
+        return view('admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes'));
     }else{
         return abort(403);
     }
     ;
 })->name('admin');
+
+Route::get('changePayement/{id}', ['as' =>'changePayement', 'uses' => 'UserPaiementController@index'])->name('changePayement');
+// Route::put('/changePayementset/{id}', [UserPaiementController::class], 'change');
 
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard'); 

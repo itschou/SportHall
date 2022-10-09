@@ -10,7 +10,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
         <div class="container">
             <a class="navbar-brand mr-auto" href="{{ route('dashboard') }}">{{ config()->get('config.basics.nom') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,9 @@
     </nav>
 
 
-    @yield('content')
+    <!-- Contenu ajouté dans les pages -->
+    @yield('content') 
+    <!-- Contenu ajouté dans les pages -->
 
     <br><br>
     <!-- Footer -->
