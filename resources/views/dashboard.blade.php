@@ -17,13 +17,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
 
-                <ul class="navbar-nav">
+                <!-- Nav Links -->
+
+                <ul class="nav nav-pills nav-fill">
                     @foreach(config('config.links') as $key => $value)
-                        <a href="{{ $value}}" class="me-3 text-light text-decoration-none">
-                            <i class="">{{ $key }}</i>
-                        </a>
+                        
+                            <li class="nav-item"><a href="{{ $value}}" class="nav-link me-3 text-light text-decoration-none">{{ $key }}</a></li>
+                        
                     @endforeach
                 </ul>
+
+                <!-- Nav Links End -->
+
+                <!-- Login , Register and Logout Links -->
                 
                 <ul class="navbar-nav ms-auto">
                     @guest
@@ -39,6 +45,9 @@
                     </li>
                     @endguest
                 </ul>
+
+                <!-- Login , Register and Logout Links End -->
+
             </div>
         </div>
     </nav>

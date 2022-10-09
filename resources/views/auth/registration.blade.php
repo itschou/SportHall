@@ -2,7 +2,7 @@
 @section('content')
 @stack('styles')
 <main class="signup-form">
-    <div class="cotainer">
+    <div class="cotainer register">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">

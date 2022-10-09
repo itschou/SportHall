@@ -13,7 +13,7 @@ return [
         'logout' => 'Deconnexion',
         'signup' => 'S\'enregistrer',
         'login' => 'Se connecter',
-        'medias-message' => 'Rejoignez nous sur :'
+        'medias-message' => 'Rejoignez nous sur :',
         
     ],
 
