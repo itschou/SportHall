@@ -21,11 +21,14 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('age');
             $table->string('email')->unique();
+            $table->string('sport');
             $table->string('role')->default('client');
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('confirmation_inscription')->default(false);
+            $table->string('etat_payement')->default(false);
 
         });
         

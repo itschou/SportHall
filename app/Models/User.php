@@ -22,7 +22,10 @@ class User extends Authenticatable
         'prenom',
         'age',
         'email',
+        'sport',
         'password',
+        'etat_payement',
+        'confirmation_inscription'
     ];
 
     /**
@@ -43,4 +46,8 @@ class User extends Authenticatable
     // protected $casts = [
     //     'email_verified_at' => 'datetime',
     // ];
+
+    public function roles() {
+        return $this->belongsToMany(Role::class, 'role');
+    }
 }

@@ -51,7 +51,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('You have signed-in');
     }
 
     public function create(array $data)
@@ -62,6 +62,7 @@ class CustomAuthController extends Controller
             'prenom' => $data['prenom'],
             'age' => $data['age'],
             'email' => $data['email'],
+            'sport' => $data['sport'],
             'password' => Hash::make($data['password'])
         ]);
 

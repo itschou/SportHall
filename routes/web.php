@@ -21,6 +21,20 @@ Route::get('/', function () {
 });
 
 
+Route::get('user', function(){
+    return view('user');
+})->name('user');
+
+
+Route::get('admin', function(){
+    if(auth()->user()->role == "admin"){
+        return view('user');
+    }else{
+        return abort(403);
+    }
+    ;
+})->name('admin');
+
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard'); 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');

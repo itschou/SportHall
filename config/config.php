@@ -5,7 +5,7 @@ return [
     //Basics
 
     'basics' => [
-        'nom' => 'Votre site web',
+        'nom' => 'SPORT HALL',
         'description' => 'Description de votre site web',
         'no-account' => 'Vous n\'avez pas de compte ?',
         'have-account' => 'Vous avez déjà un compte ?',
@@ -33,5 +33,12 @@ return [
     'links' => [
         'Qui somme nous ?' => "{{ route('signout') }}",
         'Nous rejoindre' => "{{ route('signout') }}"
+    ], 
+    
+    // Sports liste
+
+    'sports' =>[
+        'musculation' => '200DH',
+        'Judo' => '600DH'
     ]
 ];

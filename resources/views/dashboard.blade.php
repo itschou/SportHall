@@ -5,10 +5,11 @@
     <title>{{ config()->get('config.basics.nom') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    <link rel="icon" href="{{ url('public/favicon.ico') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bbs">
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
         <div class="container">
             <a class="navbar-brand mr-auto" href="{{ route('dashboard') }}">{{ config()->get('config.basics.nom') }}</a>
@@ -21,16 +22,16 @@
 
                 <ul class="nav nav-pills nav-fill">
                     @foreach(config('config.links') as $key => $value)
-                        
-                            <li class="nav-item"><a href="{{ $value}}" class="nav-link me-3 text-light text-decoration-none">{{ $key }}</a></li>
-                        
+
+                    <li class="nav-item"><a href="{{ $value}}" class="nav-link me-3 text-light text-decoration-none">{{ $key }}</a></li>
+
                     @endforeach
                 </ul>
 
                 <!-- Nav Links End -->
 
                 <!-- Login , Register and Logout Links -->
-                
+
                 <ul class="navbar-nav ms-auto">
                     @guest
                     <li class="nav-item">
@@ -40,9 +41,19 @@
                         <a class="nav-link" href="{{ route('register-user') }}">{{ config()->get('config.basics.signup') }}</a>
                     </li>
                     @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bienvenue {{ auth()->user()->prenom }} @if(auth()->user()->role == "admin") <span class="text-danger">[ADMIN]</span>@endif
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('user') }}">Profile</a></li>
+                            @if(auth()->user()->role == "admin")
+                            <li><a class="dropdown-item" href="{{ route('admin') }}">Administrateur</a></li>
+                            @endif
+                            <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a></li>
+                        </ul>
                     </li>
+
                     @endguest
                 </ul>
 
@@ -51,8 +62,8 @@
             </div>
         </div>
     </nav>
-    
-    
+
+
     @yield('content')
 
     <br><br>
@@ -68,11 +79,11 @@
 
             <!-- Right -->
             <div>
-            @foreach(config('config.medias') as $key => $value)
+                @foreach(config('config.medias') as $key => $value)
                 <a href="{{ $value }}" class="me-4 text-reset">
                     <i>{{ $key }}</i>
                 </a>
-            @endforeach
+                @endforeach
             </div>
             <!-- Right -->
         </section>

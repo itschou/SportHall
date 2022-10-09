@@ -25,7 +25,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <input type="number" placeholder="Âge" id="age" class="form-control" name="age"
+                                <input type="date" placeholder="Âge" id="age" class="form-control" name="age"
                                     required autofocus>
                                 @if ($errors->has('age'))
                                 <span class="text-danger">{{ $errors->first('age') }}</span>
@@ -36,6 +36,16 @@
                                     name="email" required autofocus>
                                 @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group mb-3">
+                                <select name="sport" id="sport" class="form-control">
+                                    @foreach(config('config.sports') as $key => $value)
+                                    <option value="{{ $key }}"> {{ $key }} ({{ $value }} / mois)</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('sport'))
+                                <span class="text-danger">{{ $errors->first('sport') }}</span>
                                 @endif
                             </div>
                             <div class="form-group mb-3">
