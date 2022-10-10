@@ -22,6 +22,7 @@ class User extends Authenticatable
         'prenom',
         'age',
         'email',
+        'tel',
         'sport',
         'password',
         'etat_payement',

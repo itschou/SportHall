@@ -10,9 +10,10 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
+    
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
         <div class="container">
-            <a class="navbar-brand mr-auto" href="{{ route('dashboard') }}">{{ config()->get('config.basics.nom') }}</a>
+            <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.basics.nom') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +24,7 @@
                 <ul class="nav nav-pills nav-fill">
                     @foreach(config('config.links') as $key => $value)
 
-                    <li class="nav-item"><a href="{{ $value}}" class="nav-link me-3 text-light text-decoration-none">{{ $key }}</a></li>
+                    <li class="nav-item"><a href="{{ $value }}" class="nav-link me-3 text-light text-decoration-none">{{ $key }}</a></li>
 
                     @endforeach
                 </ul>

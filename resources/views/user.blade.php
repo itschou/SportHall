@@ -3,6 +3,8 @@
 @section('content')
 
 <main class="container">
+@csrf
+@if(auth()->user()->confirmation_inscription == true)
 
     <h1 class="text-success text-center">Votre profile</h1><br>
     <div class="form-control">
@@ -20,6 +22,12 @@
         
         @if(auth()->user()->etat_payement == true) <h2 class="text-center">Votre état de paiement pour le mois ({{ \Carbon\Carbon::now()->format('F') }}): <p class="text-success">PAYÉ</p></h2> @else <h2 class="text-center">Votre état de paiement : <p class="text-danger">NON PAYÉ </p></h2> @endif
     </div>
+@else
+<div class="container text-center">
+    <h1 class="text-danger">{{config()->get('config.basics.noclient')}}</h1>
+    <p class="text-danger">\!/ Si vous pensez a une erreur veuillez informer le personnel. \!/</p>
+</div>
+@endif
 
 </main>
 

@@ -14,6 +14,7 @@ return [
         'signup' => 'S\'enregistrer',
         'login' => 'Se connecter',
         'medias-message' => 'Rejoignez nous sur :',
+        'noclient' => 'Désolé mais vous n\'êtes pas encore un client pour consulter cette page !'
         
     ],
 
@@ -31,8 +32,8 @@ return [
     // nav links
 
     'links' => [
-        'Qui somme nous ?' => "{{ route('signout') }}",
-        'Nous rejoindre' => "{{ route('signout') }}"
+        'Qui somme nous ?' => "admin",
+        'Nous rejoindre' => "signout"
     ], 
     
     // Sports liste

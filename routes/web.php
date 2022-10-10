@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPaiementController;
 use Illuminate\Support\Facades\DB;
 
@@ -20,12 +21,14 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     $users = DB::table('users')->select('id','nom','prenom','age','email')->get();
     return view('acceuil', compact('users'));
-});
+})->name('acceuil');
 
 
 Route::get('user', function(){
     return view('user');
 })->name('user');
+
+Route::get('user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
 
 Route::get('admin', function(){
@@ -41,7 +44,7 @@ Route::get('admin', function(){
     ;
 })->name('admin');
 
-Route::get('changePayement/{id}', ['as' =>'changePayement', 'uses' => 'UserPaiementController@index'])->name('changePayement');
+// Route::get('changePayement/{id}', ['as' =>'changePayement', 'uses' => 'UserPaiementController@index'])->name('changePayement');
 // Route::put('/changePayementset/{id}', [UserPaiementController::class], 'change');
 
 
