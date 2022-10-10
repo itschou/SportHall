@@ -26,7 +26,7 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('user')
                 ->withSuccess('Signed in');
         }
 
@@ -45,6 +45,7 @@ class CustomAuthController extends Controller
             'prenom' => 'required',
             'age' => 'required',
             'email' => 'required|email|unique:users',
+            'tel' => 'required',
             'password' => 'required|min:6',
         ]);
 
@@ -62,6 +63,7 @@ class CustomAuthController extends Controller
             'prenom' => $data['prenom'],
             'age' => $data['age'],
             'email' => $data['email'],
+            'tel' => $data['tel'],
             'sport' => $data['sport'],
             'password' => Hash::make($data['password'])
         ]);

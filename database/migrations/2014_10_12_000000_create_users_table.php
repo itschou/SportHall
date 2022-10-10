@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('age');
             $table->string('email')->unique();
+            $table->string('tel');
             $table->string('sport');
             $table->string('role')->default('client');
             // $table->timestamp('email_verified_at')->nullable();
