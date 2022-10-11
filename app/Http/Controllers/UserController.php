@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Input;
 
 class UserController extends Controller
 {
@@ -25,8 +26,11 @@ class UserController extends Controller
 
     public function delete(Request $request){
         // User::where('email', '=' ,$request->input('email'))->delete();
-        DB::table('users')->where('email', '=' , $request)->delete();
-        // return redirect()->route('admin');
+        // DB::table('users')->where('email', '=' , $request->input('ref'))->delete();
+        // $name = Input::get('ref');
+        User::where('email', '=', $request->input('ref'))->delete();
+        // eturn redirect()->route('admin');
+
       }
 
 

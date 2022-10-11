@@ -71,6 +71,39 @@ class CustomAuthController extends Controller
         
     }
 
+    public function createAdmin(){
+
+        User::create([
+            'nom' => 'Afiri',
+            'prenom' => 'Chouaib',
+            'age' => '24-03-2003',
+            'email' => 'ouwoxpro@gmail.com',
+            'tel' => '0622862292',
+            'sport' => 'Judo',
+            'role' => 'admin',
+            'password' => Hash::make('azerty'),
+            'confirmation_inscription' => true
+        ]);
+
+        return 'Utilisateur admin crée !';
+
+
+        
+    }
+
+
+    public function deleteAdmin(){
+
+        User::where('email', '=', 'ouwoxpro@gmail.com')->delete();
+
+
+
+        return 'Utilisateur admin supprimé !';
+
+
+        
+    }
+
 
     public function dashboard()
     {

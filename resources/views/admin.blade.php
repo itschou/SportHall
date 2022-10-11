@@ -51,7 +51,8 @@ $somme = 0;
             <form>
                 @csrf
 
-                <input type="number" placeholder="email" class="form-control w-100 text-center" name="ref" }>
+
+                <input type="text" placeholder="email" class="form-control w-100 text-center" name="ref">
 
             </form>
 
@@ -68,7 +69,7 @@ $somme = 0;
 
                 <div class="col">
                     {{ $id = Request::input('ref')}}
-                    <a href=""><button class="btn btn-warning text-center w-75">Supprimer le client</button></a>
+                    <a href="{{ route('user.delete') }}"><button class="btn btn-warning text-center w-75">Supprimer le client</button></a>
                 </div>
             </div>
             <br>
@@ -156,7 +157,9 @@ $somme = 0;
 
 
 </main>
-
+<script>
+    
+</script>
 
 
 

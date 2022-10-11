@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'tel',
         'sport',
+        'role',
         'password',
         'etat_payement',
         'confirmation_inscription'

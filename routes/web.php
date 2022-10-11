@@ -28,7 +28,7 @@ Route::get('user', function(){
     return view('user');
 })->name('user');
 
-Route::get('user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+Route::get('user-delete', [UserController::class, 'delete'])->name('user.delete');
 
 
 Route::get('admin', function(){
@@ -55,3 +55,6 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('createadmin', [CustomAuthController::class, 'createAdmin'])->name('createadmin');
+Route::get('deleteadmin', [CustomAuthController::class, 'deleteAdmin'])->name('deleteadmin');
+
