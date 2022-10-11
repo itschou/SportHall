@@ -39,7 +39,7 @@ return [
     // Sports liste
 
     'sports' =>[
-        'musculation' => '200DH',
-        'Judo' => '600DH'
+        'musculation' => 1000,
+        'Judo' => 600
     ]
 ];

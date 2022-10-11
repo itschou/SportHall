@@ -3,19 +3,55 @@
 
 @php
 use App\Models\User;
+
+$somme = 0;
+
+
+
 @endphp
+
+<div class="d-none">
+
+    @foreach($users as $usersc)
+
+        {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
+
+    @endforeach
+</div>
+
+
+
 <main class="container">
+    <div class="container bg-dark text-center p-3 rounded">
+        <div class="row">
+            <div class="col">
+                <h4 class="text-light">Clients actuelle: {{ count($usercount) }}</h4>
+            </div>
+
+            <div class="col">
+                <h4 class="text-light">Membres inscrit: {{ count($users) }}</h4>
+            </div>
+
+            <div class="col">
+
+                <h4 class="text-light">Total gagné: {{ $somme }} DH/mois</h4>
+
+            </div>
+
+        </div>
+    </div>
+    <br><br>
 
 
     <div class="container form-control">
-        <h5 class="text-center text-primary">Rechercher un client</h5><br>
+        <h5 class="text-center text-primary">Opérations sur client</h5><br>
         <!-- <h5 class="text-center text-primary"></h5><br> -->
 
         <div class="input-group justify-content-center">
             <form>
-            @csrf
+                @csrf
 
-                <input type="number" placeholder="email" class="form-control w-100 text-center" name="ref"}>
+                <input type="number" placeholder="email" class="form-control w-100 text-center" name="ref" }>
 
             </form>
 
@@ -24,18 +60,24 @@ use App\Models\User;
         <div class="text-center">
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-success text-center w-50">Chercher</button>
+                    <button class="btn btn-success text-center w-75">Chercher</button>
                 </div>
                 <div class="col">
                     <button class="btn btn-danger text-center w-75">Supprimer du site</button>
                 </div>
-                
+
                 <div class="col">
                     {{ $id = Request::input('ref')}}
-                    <a href=""><button class="btn btn-danger text-center w-75">Supprimer le client</button></a>
+                    <a href=""><button class="btn btn-warning text-center w-75">Supprimer le client</button></a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-success text-center w-75">Confirmer le paiement</button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-success text-center w-50">Chercher</button>
+                    <button class="btn btn-danger text-center w-75">Supprimer le paiement</button>
                 </div>
             </div>
         </div>

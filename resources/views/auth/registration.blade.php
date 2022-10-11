@@ -48,7 +48,7 @@
                             <div class="form-group mb-3">
                                 <select name="sport" id="sport" class="form-control">
                                     @foreach(config('config.sports') as $key => $value)
-                                    <option value="{{ $key }}"> {{ $key }} ({{ $value }} / mois)</option>
+                                    <option value="{{ $key }}"> {{ $key }} ({{ $value }}DH / mois)</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('sport'))

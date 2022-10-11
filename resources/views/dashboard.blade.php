@@ -11,6 +11,7 @@
 
 <body class="d-flex flex-column min-vh-100 bbs">
     
+    
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
         <div class="container">
             <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.basics.nom') }}</a>
@@ -63,6 +64,7 @@
             </div>
         </div>
     </nav>
+        
 
 
     <!-- Contenu ajouté dans les pages -->

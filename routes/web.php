@@ -34,10 +34,11 @@ Route::get('user-delete/{id}', [UserController::class, 'delete'])->name('user.de
 Route::get('admin', function(){
     if(auth()->user()->role == "admin"){
         $users = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->get();
+        $usercount = DB::table('users')->select('id', 'etat_payement')->where('etat_payement', '=', true)->get();
         $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
         $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
         // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
-        return view('admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes'));
+        return view('admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
     }else{
         return abort(403);
     }
