@@ -20,7 +20,7 @@
             
         </table>
         
-        @if(auth()->user()->etat_payement == true) <h2 class="text-center">Votre état de paiement pour le mois ({{ \Carbon\Carbon::now()->format('F') }}): <p class="text-success">PAYÉ</p></h2> @else <h2 class="text-center">Votre état de paiement : <p class="text-danger">NON PAYÉ </p></h2> @endif
+        @if(auth()->user()->etat_payement == true) <h2 class="text-center">Votre état de paiement pour le mois ({{ \Carbon\Carbon::now()->format('F') }}): <p class="text-success">PAYÉ</p></h2> @else <h2 class="text-center">Votre état de paiement pour le mois ({{ \Carbon\Carbon::now()->format('F') }}): <p class="text-danger">NON PAYÉ </p></h2> @endif
     </div>
 @else
 <div class="container text-center">
