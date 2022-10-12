@@ -14,7 +14,7 @@ $somme = 0;
 
     @foreach($usercount as $usersc)
 
-        {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
+    {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
 
     @endforeach
 </div>
@@ -47,41 +47,26 @@ $somme = 0;
         <h5 class="text-center text-primary">Opérations sur client</h5><br>
         <!-- <h5 class="text-center text-primary"></h5><br> -->
 
-        <div class="input-group justify-content-center">
-            <form>
+        <div class="justify-content-center">
+            <form action="{{ route('user.delete') }}" method="POST">
                 @csrf
 
 
-                <input type="text" placeholder="email" class="form-control w-100 text-center" name="ref">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col col-6">
+                        <input type="text" placeholder="email" class="form-control w-100 float-start text-start" name="personmail">
+                    </div>
+
+                    <div class="col">
+                        <button type="submit" class="btn btn-success text-center w-50">Chercher</button>
+                    </div>
+                </div>
 
             </form>
 
         </div>
         <br>
-        <div class="text-center">
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-success text-center w-75">Chercher</button>
-                </div>
-                <!-- <div class="col">
-                    <button class="btn btn-danger text-center w-75">Supprimer du site</button>
-                </div>
-
-                <div class="col">
-                    {{ $id = Request::input('ref')}}
-                    <a href="{{ route('user.delete') }}"><button class="btn btn-warning text-center w-75">Supprimer le client</button></a>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-success text-center w-75">Confirmer le paiement</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-danger text-center w-75">Supprimer le paiement</button>
-                </div> -->
-            </div>
-        </div>
         <br>
     </div>
 
@@ -111,7 +96,8 @@ $somme = 0;
                 <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->sport }}</td>
-                <td scope="col"><button class="btn btn-success">Gérer</button></td>
+                <td scope="col"><button class="btn btn-success">true</button></td>
+                
             </tr>
             @endforeach
 
@@ -144,10 +130,11 @@ $somme = 0;
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nom }}</td>
                 <td>{{ $user->prenom }}</td>
-                <td>{{ $user->age }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->sport }}</td>
                 <td scope="col"><a href="#"><button class="btn btn-danger">Gérer</button></a></td>
+                <td scope="col"><button class="btn btn-success">false</button></td>
             </tr>
             @endforeach
 
@@ -158,7 +145,7 @@ $somme = 0;
 
 </main>
 <script>
-    
+
 </script>
 
 

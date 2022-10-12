@@ -10,28 +10,34 @@ use App\Http\Controllers\Input;
 
 class UserController extends Controller
 {
-    
+
     // public function index(){
     //     $utilisateur = User::all();
     //     return view('utilisateur.index', compact('utilisateur'));
     // }
 
-    public function search(Request $request, $id){
+    public function search(Request $request, $id)
+    {
         // DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $id)->update(['etat_payement' => true]);
         // User::where('id', $id)->update(['etat_payement' => true]);
         $utilisateur = User::find($id);
         return $utilisateur->nom + $utilisateur->prenom + $utilisateur->etat_payement + $utilisateur->email;
-
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         // User::where('email', '=' ,$request->input('email'))->delete();
         // DB::table('users')->where('email', '=' , $request->input('ref'))->delete();
         // $name = Input::get('ref');
-        User::where('email', '=', $request->input('ref'))->delete();
-        // eturn redirect()->route('admin');
+        User::where('email', '=', $request->input('personmail'))->delete();
+        return redirect()->route('admin');
+    }
 
-      }
+    public function select(Request $request){
+
+        // User::where('email', '=', $request->email)->update(['etat_payement' => true]);
+        return redirect()->route('admin');
+    }
 
 
 
