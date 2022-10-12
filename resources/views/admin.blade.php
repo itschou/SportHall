@@ -12,7 +12,7 @@ $somme = 0;
 
 <div class="d-none">
 
-    @foreach($users as $usersc)
+    @foreach($usercount as $usersc)
 
         {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
 
@@ -63,7 +63,7 @@ $somme = 0;
                 <div class="col">
                     <button class="btn btn-success text-center w-75">Chercher</button>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <button class="btn btn-danger text-center w-75">Supprimer du site</button>
                 </div>
 
@@ -79,7 +79,7 @@ $somme = 0;
                 </div>
                 <div class="col">
                     <button class="btn btn-danger text-center w-75">Supprimer le paiement</button>
-                </div>
+                </div> -->
             </div>
         </div>
         <br>
@@ -108,7 +108,7 @@ $somme = 0;
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nom }}</td>
                 <td>{{ $user->prenom }}</td>
-                <td>{{ $user->age }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->sport }}</td>
                 <td scope="col"><button class="btn btn-success">Gérer</button></td>
