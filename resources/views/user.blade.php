@@ -15,6 +15,7 @@
             <tr> <th class="text-center"> Role: </th> <td >{{auth()->user()->role}}</td></tr>
             <tr> <th class="text-center"> Email: </th> <td >{{auth()->user()->email}}</td></tr>
             <tr> <th class="text-center"> Téléphone: </th> <td >{{auth()->user()->tel}}</td></tr>
+            <tr> <th class="text-center"> CIN: </th> <td >{{auth()->user()->CIN}}</td></tr>
             <tr> <th class="text-center"> Sport pratiqué: </th> <td >{{auth()->user()->sport}}</td></tr>
             <tr> <th class="text-center"> Inscription: </th> <td >{{auth()->user()->created_at}}</td></tr>
             

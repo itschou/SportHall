@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $users = DB::table('users')->select('id','nom','prenom','age','email')->get();
+    $users = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN')->get();
     return view('acceuil', compact('users'));
 })->name('acceuil');
 
@@ -28,16 +28,16 @@ Route::get('user', function(){
     return view('user');
 })->name('user');
 
-Route::post('user-delete', [UserController::class, 'delete'])->name('user.delete');
+Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
 // Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 
 Route::get('admin', function(){
     if(auth()->user()->role == "admin"){
-        $users = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->get();
+        $users = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->get();
         $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
-        $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
-        $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
+        $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
+        $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
         // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
         return view('admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
     }else{

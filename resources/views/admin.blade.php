@@ -22,6 +22,7 @@ $somme = 0;
 
 
 <main class="container">
+    @include('flash-message')
     <div class="container bg-dark text-center p-3 rounded">
         <div class="row">
             <div class="col">
@@ -38,6 +39,7 @@ $somme = 0;
 
             </div>
 
+
         </div>
     </div>
     <br><br>
@@ -48,20 +50,49 @@ $somme = 0;
         <!-- <h5 class="text-center text-primary"></h5><br> -->
 
         <div class="justify-content-center">
-            <form action="{{ route('user.delete') }}" method="POST">
+            <form action="{{ route('user.operations') }}" method="POST">
                 @csrf
 
 
                 <div class="row">
-                    <div class="col"></div>
-                    <div class="col col-6">
-                        <input type="text" placeholder="email" class="form-control w-100 float-start text-start" name="personmail">
+                    <!-- <div class="col"></div> -->
+                    <div class="col-8">
+                        <input type="text" placeholder="email" class="form-control w-100 float-start text-center" name="personmail" required>
                     </div>
+                    
 
                     <div class="col">
-                        <button type="submit" class="btn btn-success text-center w-50">Chercher</button>
+                        <li class="nav-item dropdown navbar-nav ">
+                            <button class="btn btn-secondary nav-link dropdown-toggle text-center" href="#" id="operations" role="button" data-bs-toggle="dropdown" aria-expanded="false">Opérations</button>
+                            <ul class="dropdown-menu unstyled p-2 mx-2" aria-labelledby="operations">
+
+                                <li>
+                                    <button type="submit" name="ope" value="paye" class="btn btn-transparent text-center w-100 text-success">Payé</button><br>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="nonpaye" class="btn btn-transparent text-center w-100 text-danger">Non payé</button>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="supprimerclient" class="btn btn-transparent text-center w-100 text-warning">Supprimer (Client)</button>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
                     </div>
+                    
+                    
                 </div>
+
+
+
+
+
+
+
 
             </form>
 
@@ -83,8 +114,9 @@ $somme = 0;
                     <th scope="col">Prénom</th>
                     <th scope="col">Age</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">CIN</th>
                     <th scope="col">Sport pratiqué</th>
-                    <th scope="col text-center">Action</th>
                 </tr>
             </thead>
             @foreach($users_Paiement_No as $user)
@@ -95,11 +127,13 @@ $somme = 0;
                 <td>{{ $user->prenom }}</td>
                 <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->tel }}</td>
+                <td>{{ $user->CIN }}</td>
                 <td>{{ $user->sport }}</td>
-                <td scope="col"><button class="btn btn-success">true</button></td>
-                
+
             </tr>
             @endforeach
+
 
 
         </table>
@@ -121,10 +155,12 @@ $somme = 0;
                     <th scope="col">Prénom</th>
                     <th scope="col">Age</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">CIN</th>
                     <th scope="col">Sport pratiqué</th>
-                    <th scope="col text-center">Action</th>
                 </tr>
             </thead>
+
             @foreach($users_Paiement_Yes as $user)
             <tr>
                 <td>{{ $user->id }}</td>
@@ -132,9 +168,9 @@ $somme = 0;
                 <td>{{ $user->prenom }}</td>
                 <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->tel }}</td>
+                <td>{{ $user->CIN }}</td>
                 <td>{{ $user->sport }}</td>
-                <td scope="col"><a href="#"><button class="btn btn-danger">Gérer</button></a></td>
-                <td scope="col"><button class="btn btn-success">false</button></td>
             </tr>
             @endforeach
 
