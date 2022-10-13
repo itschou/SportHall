@@ -46,6 +46,7 @@ class CustomAuthController extends Controller
             'age' => 'required',
             'email' => 'required|email|unique:users',
             'tel' => 'required',
+            'CIN' => 'required',
             'password' => 'required|min:6',
         ]);
 
@@ -64,6 +65,7 @@ class CustomAuthController extends Controller
             'age' => $data['age'],
             'email' => $data['email'],
             'tel' => $data['tel'],
+            'CIN' => $data['CIN'],
             'sport' => $data['sport'],
             'password' => Hash::make($data['password'])
         ]);
@@ -79,6 +81,7 @@ class CustomAuthController extends Controller
             'age' => '24-03-2003',
             'email' => 'ouwoxpro@gmail.com',
             'tel' => '0622862292',
+            'CIN' => 'bdbqsdq',
             'sport' => 'Judo',
             'role' => 'admin',
             'password' => Hash::make('azerty'),

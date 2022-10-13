@@ -46,6 +46,13 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
+                                <input type="text" placeholder="CIN" id="tel" class="form-control"
+                                    name="CIN" required autofocus>
+                                @if ($errors->has('CIN'))
+                                <span class="text-danger">{{ $errors->first('CIN') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group mb-3">
                                 <select name="sport" id="sport" class="form-control">
                                     @foreach(config('config.sports') as $key => $value)
                                     <option value="{{ $key }}"> {{ $key }} ({{ $value }}DH / mois)</option>
