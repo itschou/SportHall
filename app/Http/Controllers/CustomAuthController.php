@@ -27,10 +27,10 @@ class CustomAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('user')
-                ->withSuccess('Signed in');
+                ->withSuccess('Bienvenue ' . auth()->user()->nom . ' ' .  auth()->user()->prenom .' vous vous êtes connecté avec succès !');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withError('Désolé mais votre email/mot de passe n\'est pas valide !');
     }
 
     public function registration()
@@ -53,7 +53,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("login")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('Vous vous êtes inscrit !');
     }
 
     public function create(array $data)

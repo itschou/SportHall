@@ -2,6 +2,7 @@
 @section('content')
 @stack('styles')
 <main class="signup-form">
+@include('flash-message')
     <div class="cotainer register">
         <div class="row justify-content-center">
             <div class="col-md-4">
