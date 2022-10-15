@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Input;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -33,6 +34,16 @@ class UserController extends Controller
         } else {
 
             return redirect()->route('admin')->withError('Erreur, le client ' . $request->input('personmail') . ' n\'éxiste pas !');
+        }
+    }
+
+
+    public function changePass(Request $request){
+        if(Hash::check($request->input('mdp'),auth()->user()->password)){
+            return redirect()->route('user')->withError('Erreur, veuillez entrer un mot de passe différent du mot de passe actuelle');
+        }else{
+            DB::table('users')->where('CIN', '=', auth()->user()->CIN)->update(array('password' => Hash::make($request->input('mdp'))));
+            return redirect()->route('user')->withSuccess('Votre mot de passe a bien été changé !');
         }
     }
 }

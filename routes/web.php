@@ -29,6 +29,7 @@ Route::get('user', function(){
 })->name('user');
 
 Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
+Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
 // Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 

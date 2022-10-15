@@ -3,7 +3,7 @@
 @section('content')
 
 <main class="container">
-@csrf
+@include('flash-message')
 @if(auth()->user()->confirmation_inscription == true)
 
     <h1 class="text-success text-center">Votre profile</h1><br>
@@ -31,6 +31,25 @@
 @endif
 
 </main>
+<br>
+
+<div class="container text-center">
+
+    
+    <form class="form-control" action="{{route('user.changepass')}}" method="POST">
+        @csrf
+        <h1 class="">Changement de mot de passe</h1><br>
+
+        <input placeholder="Nouveau mot de passe" type="password" class="form-control text-center" name="mdp">
+        <br>
+        
+        <button type="submit" class="btn btn-success justify-content-center"> Confirmer le changement de mot de passe</button>
+        <br>
+
+
+    </form>
+
+</div>
 
 
 
