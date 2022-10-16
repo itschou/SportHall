@@ -4,14 +4,20 @@
 <head>
     <title>{{ config()->get('config.basics.nom') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet/less" href="{{ asset('scss/colors.scss') }}">
     <link rel="icon" href="{{ url('public/favicon.ico') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
-    
-    
+    <script type="text/javascript" src="{{asset('/js/Compteur.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/js/TextAnimations.js')}}"></script>
+
+
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
         <div class="container">
             <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.basics.nom') }}</a>
@@ -64,11 +70,13 @@
             </div>
         </div>
     </nav>
-        
+
+    <!-- <div class="alert"></div> -->
+
 
 
     <!-- Contenu ajouté dans les pages -->
-    @yield('content') 
+    @yield('content')
     <!-- Contenu ajouté dans les pages -->
 
     <br><br>

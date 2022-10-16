@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     $users = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN')->get();
-    return view('acceuil', compact('users'));
+    $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
+    return view('acceuil', compact('users', 'usercount'));
 })->name('acceuil');
 
 
