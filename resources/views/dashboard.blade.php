@@ -2,19 +2,28 @@
 <html>
 
 <head>
-    <title>{{ config()->get('config.basics.nom') }}</title>
+    <title>{{ config()->get('config.site.Nom') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="icon" href="{{ url('public/favicon.ico') }}">
+    <link rel="stylesheet/less" href="{{ asset('scss/colors.scss') }}">
+    <link rel="icon" href="{{ url('/favicon.ico') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
-    
-    
+    <script type="text/javascript" src="{{asset('/js/Compteur.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/js/TextAnimations.js')}}"></script>
+
+
+
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
         <div class="container">
-            <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.basics.nom') }}</a>
+            <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.site.Nom') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,6 +60,7 @@
                             <li><a class="dropdown-item" href="{{ route('user') }}">Profile</a></li>
                             @if(auth()->user()->role == "admin")
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Administrateur</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site') }}">Site</a></li>
                             @endif
                             <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a></li>
                         </ul>
@@ -64,11 +74,12 @@
             </div>
         </div>
     </nav>
-        
+
+
 
 
     <!-- Contenu ajouté dans les pages -->
-    @yield('content') 
+    @yield('content')
     <!-- Contenu ajouté dans les pages -->
 
     <br><br>
@@ -103,10 +114,10 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>{{ config()->get('config.basics.nom')}}
+                            <i class="fas fa-gem me-3"></i>{{ config()->get('config.site.Nom')}}
                         </h6>
                         <p>
-                            {{ config()->get('config.basics.description')}}
+                            {{ config()->get('config.site.Description')}}
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -132,7 +143,7 @@
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2021 Copyright:
-            <a class="text-reset fw-bold" href="#"> {{ config()->get('config.basics.nom')}} </a>
+            <a class="text-reset fw-bold" href="#"> {{ config()->get('config.site.Nom')}} </a>
         </div>
         <!-- Copyright -->
     </footer>

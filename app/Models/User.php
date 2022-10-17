@@ -23,7 +23,9 @@ class User extends Authenticatable
         'age',
         'email',
         'tel',
+        'CIN',
         'sport',
+        'role',
         'password',
         'etat_payement',
         'confirmation_inscription'

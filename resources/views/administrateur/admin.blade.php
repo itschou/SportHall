@@ -12,9 +12,9 @@ $somme = 0;
 
 <div class="d-none">
 
-    @foreach($users as $usersc)
+    @foreach($usercount as $usersc)
 
-        {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
+    {{ $somme += config()->get('config.sports.'. $usersc->sport); }}
 
     @endforeach
 </div>
@@ -22,6 +22,7 @@ $somme = 0;
 
 
 <main class="container">
+    @include('utils/flash-message')
     <div class="container bg-dark text-center p-3 rounded">
         <div class="row">
             <div class="col">
@@ -38,6 +39,7 @@ $somme = 0;
 
             </div>
 
+
         </div>
     </div>
     <br><br>
@@ -47,40 +49,55 @@ $somme = 0;
         <h5 class="text-center text-primary">Opérations sur client</h5><br>
         <!-- <h5 class="text-center text-primary"></h5><br> -->
 
-        <div class="input-group justify-content-center">
-            <form>
+        <div class="justify-content-center">
+            <form action="{{ route('user.operations') }}" method="POST">
                 @csrf
 
-                <input type="number" placeholder="email" class="form-control w-100 text-center" name="ref" }>
+
+                <div class="row">
+                    <!-- <div class="col"></div> -->
+                    <div class="col-8">
+                        <input type="text" placeholder="email" class="form-control w-100 float-start text-center" name="personmail" required>
+                    </div>
+                    
+
+                    <div class="col">
+                        <li class="nav-item dropdown navbar-nav ">
+                            <button class="btn btn-secondary nav-link dropdown-toggle text-center" href="#" id="operations" role="button" data-bs-toggle="dropdown" aria-expanded="false">Opérations</button>
+                            <ul class="dropdown-menu unstyled p-2 mx-2" aria-labelledby="operations">
+
+                                <li>
+                                    <button type="submit" name="ope" value="paye" class="btn btn-transparent text-center w-100 text-success">Payé</button><br>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="nonpaye" class="btn btn-transparent text-center w-100 text-danger">Non payé</button>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="supprimerclient" class="btn btn-transparent text-center w-100 text-warning">Supprimer (Client)</button>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </div>
+                    
+                    
+                </div>
+
+
+
+
+
+
+
 
             </form>
 
         </div>
         <br>
-        <div class="text-center">
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-success text-center w-75">Chercher</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-danger text-center w-75">Supprimer du site</button>
-                </div>
-
-                <div class="col">
-                    {{ $id = Request::input('ref')}}
-                    <a href=""><button class="btn btn-warning text-center w-75">Supprimer le client</button></a>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-success text-center w-75">Confirmer le paiement</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-danger text-center w-75">Supprimer le paiement</button>
-                </div>
-            </div>
-        </div>
         <br>
     </div>
 
@@ -97,8 +114,9 @@ $somme = 0;
                     <th scope="col">Prénom</th>
                     <th scope="col">Age</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">CIN</th>
                     <th scope="col">Sport pratiqué</th>
-                    <th scope="col text-center">Action</th>
                 </tr>
             </thead>
             @foreach($users_Paiement_No as $user)
@@ -107,12 +125,15 @@ $somme = 0;
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nom }}</td>
                 <td>{{ $user->prenom }}</td>
-                <td>{{ $user->age }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->tel }}</td>
+                <td>{{ $user->CIN }}</td>
                 <td>{{ $user->sport }}</td>
-                <td scope="col"><button class="btn btn-success">Gérer</button></td>
+
             </tr>
             @endforeach
+
 
 
         </table>
@@ -134,19 +155,22 @@ $somme = 0;
                     <th scope="col">Prénom</th>
                     <th scope="col">Age</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">CIN</th>
                     <th scope="col">Sport pratiqué</th>
-                    <th scope="col text-center">Action</th>
                 </tr>
             </thead>
+
             @foreach($users_Paiement_Yes as $user)
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nom }}</td>
                 <td>{{ $user->prenom }}</td>
-                <td>{{ $user->age }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->age)->age }} ans</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->tel }}</td>
+                <td>{{ $user->CIN }}</td>
                 <td>{{ $user->sport }}</td>
-                <td scope="col"><a href="#"><button class="btn btn-danger">Gérer</button></a></td>
             </tr>
             @endforeach
 
@@ -156,7 +180,9 @@ $somme = 0;
 
 
 </main>
+<script>
 
+</script>
 
 
 

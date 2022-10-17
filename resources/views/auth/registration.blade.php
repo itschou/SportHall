@@ -2,6 +2,7 @@
 @section('content')
 @stack('styles')
 <main class="signup-form">
+@include('utils/flash-message')
     <div class="cotainer register">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -43,6 +44,13 @@
                                     name="tel" required autofocus>
                                 @if ($errors->has('tel'))
                                 <span class="text-danger">{{ $errors->first('tel') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="CIN" id="tel" class="form-control"
+                                    name="CIN" required autofocus>
+                                @if ($errors->has('CIN'))
+                                <span class="text-danger">{{ $errors->first('CIN') }}</span>
                                 @endif
                             </div>
                             <div class="form-group mb-3">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPaiementController;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +20,9 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $users = DB::table('users')->select('id','nom','prenom','age','email')->get();
-    return view('acceuil', compact('users'));
+    $users = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN')->get();
+    $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
+    return view('acceuil', compact('users', 'usercount'));
 })->name('acceuil');
 
 
@@ -28,26 +30,34 @@ Route::get('user', function(){
     return view('user');
 })->name('user');
 
-Route::get('user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
+Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
+// Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 
 Route::get('admin', function(){
     if(auth()->user()->role == "admin"){
-        $users = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->get();
-        $usercount = DB::table('users')->select('id', 'etat_payement')->where('etat_payement', '=', true)->get();
-        $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
-        $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
+        $users = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->get();
+        $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
+        $users_Paiement_No = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=' ,false)->get();
+        $users_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=' ,true)->get();
         // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
-        return view('admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
+        return view('administrateur/admin' , compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
     }else{
         return abort(403);
     }
     ;
 })->name('admin');
 
-// Route::get('changePayement/{id}', ['as' =>'changePayement', 'uses' => 'UserPaiementController@index'])->name('changePayement');
-// Route::put('/changePayementset/{id}', [UserPaiementController::class], 'change');
 
+Route::get('site', function(){
+    return view('administrateur/site');
+})->name('site');
+
+Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel');
+
+
+// Authentification
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard'); 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
@@ -55,3 +65,8 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('createadmin', [CustomAuthController::class, 'createAdmin'])->name('createadmin');
+Route::get('deleteadmin', [CustomAuthController::class, 'deleteAdmin'])->name('deleteadmin');
+
+// Authentification
+
