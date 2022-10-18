@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPaiementController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 
 Route::get('user', function () {
-    if (!auth(null)) {
+    if (Auth::check()) {
 
         return view('utilisateur/user');
     } else {
@@ -41,7 +42,7 @@ Route::post('user-changepass', [UserController::class, 'changePass'])->name('use
 
 
 Route::get('admin', function () {
-    if (!auth(null)) {
+    if (Auth::check()) {
 
         if (auth()->user()->role == "admin") {
             $users = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->get();
@@ -60,7 +61,7 @@ Route::get('admin', function () {
 
 
 Route::get('site', function () {
-    if (!auth(null)) {
+    if (Auth::check()) {
         return view('administrateur/site');
     } else {
         return abort(403, 'Veuillez vous connecter !');
