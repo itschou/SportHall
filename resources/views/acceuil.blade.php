@@ -8,12 +8,12 @@
     <div class="container-fluid main px-0">
         <br>
         <h1 class="welcome text-center">
-            <span class="welcome text-white">{{ config()->get('config.site.Nom')}}</span>
+            <span class="welcome text-dark">{{ config()->get('config.site.Nom')}}</span>
         </h1>
         <h3 class="welcome text-center">
-            <span class="welcome text-white">Votre salle de sport !</span>
-            <span class="welcome text-white">Votre bien être !</span>
-            <span class="welcome text-white">Votre transformation !</span>
+            <span class="welcome text-dark">Votre salle de sport !</span>
+            <span class="welcome text-dark">Votre bien être !</span>
+            <span class="welcome text-dark">Votre transformation !</span>
 
         </h3><br><br><br>
         <div class="justify-content-center text-center">
