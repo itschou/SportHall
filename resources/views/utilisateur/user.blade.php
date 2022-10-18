@@ -4,7 +4,7 @@
 
 <main class="container">
 @include('utils/flash-message')
-@if(auth()->user()->confirmation_inscription == true)
+@if(auth()->user()->etat_payement == true)
 
     <h1 class="text-success text-center">Votre profile</h1><br>
     <div class="form-control">

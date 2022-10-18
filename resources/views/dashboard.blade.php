@@ -58,8 +58,10 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('user') }}">Profile</a></li>
                             @if(auth()->user()->role == "admin")
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Administrateur</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site') }}">Site</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site') }}">Gestion du site</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             @endif
                             <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a></li>
                         </ul>
@@ -95,9 +97,11 @@
             <!-- Right -->
             <div>
                 @foreach(config('config.medias') as $key => $value)
+                @if($value != null)
                 <a href="{{ $value }}" class="me-4 text-reset">
                     <i>{{ $key }}</i>
                 </a>
+                @endif
                 @endforeach
             </div>
             <!-- Right -->
@@ -125,12 +129,12 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fa fa-home me-3"></i>{{config()->get('config.site.Adresse')}}</p>
                         <p>
-                            <i class="fas fa-envelope me-3"></i>
-                            info@example.com
+                            <i class="fa fa-envelope me-3"></i>
+                            {{config()->get('config.site.Email')}}
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fa fa-phone me-3"></i>{{config()->get('config.site.Téléphone')}}</p>
                     </div>
                     <!-- Grid column -->
                 </div>

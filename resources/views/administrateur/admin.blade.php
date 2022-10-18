@@ -78,6 +78,7 @@ $somme = 0;
                                     <button type="submit" name="ope" value="supprimerclient" class="btn btn-transparent text-center w-100 text-warning">Supprimer (Client)</button>
 
                                 </li>
+                                
 
                             </ul>
                         </li>
