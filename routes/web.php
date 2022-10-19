@@ -20,21 +20,24 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+
+
 Route::get('/', function () {
     $users = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN')->get();
     $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
-    return view('acceuil', compact('users', 'usercount'));
+
+    if (config()->get('config.install') == false) {
+        return view('utils/install', compact('users', 'usercount'));
+    } else {
+        return view('acceuil', compact('users', 'usercount'));
+    }
 })->name('acceuil');
 
 
 Route::get('user', function () {
-    if (Auth::check()) {
 
-        return view('utilisateur/user');
-    } else {
-        return abort(403, 'Veuillez vous connecter !');
-    }
-})->name('user');
+    return view('utilisateur/user');
+})->name('user')->middleware('auth');
 
 Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
 Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
@@ -42,33 +45,27 @@ Route::post('user-changepass', [UserController::class, 'changePass'])->name('use
 
 
 Route::get('admin', function () {
-    if (Auth::check()) {
 
-        if (auth()->user()->role == "admin") {
-            $users = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->get();
-            $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
-            $users_Paiement_No = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=', false)->get();
-            $users_Paiement_Yes = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=', true)->get();
-            // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
-            return view('administrateur/admin', compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
-        } else {
-            return abort(403);
-        }
+
+    if (auth()->user()->role == "admin") {
+        $users = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->get();
+        $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
+        $users_Paiement_No = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=', false)->get();
+        $users_Paiement_Yes = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN', 'sport', 'etat_payement')->where('etat_payement', '=', true)->get();
+        // $change_Paiement_Yes = DB::table('users')->select('id','nom','prenom','age','email', 'sport', 'etat_payement')->where('id', '=', $users)->update(['etat_payement' => true]);
+        return view('administrateur/admin', compact('users', 'users_Paiement_No', 'users_Paiement_Yes', 'usercount'));
     } else {
-        return abort(403, 'Veuillez vous connecter !');
-    };
-})->name('admin');
+        return abort(403);
+    }
+})->name('admin')->middleware('auth');
 
 
 Route::get('site', function () {
-    if (Auth::check()) {
         return view('administrateur/site');
-    } else {
-        return abort(403, 'Veuillez vous connecter !');
-    }
-})->name('site');
 
-Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel');
+})->name('site')->middleware('auth');
+
+Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel')->middleware('auth');
 
 
 // Authentification
