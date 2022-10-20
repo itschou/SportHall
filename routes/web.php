@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\InstallController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPaiementController;
@@ -37,10 +38,11 @@ Route::get('/', function () {
 Route::get('user', function () {
 
     return view('utilisateur/user');
-})->name('user')->middleware('auth');
+})->name('user')->middleware(['auth', 'installcheck']);
 
 Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
 Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
+Route::post('install-ui' , [InstallController::class, 'install'])->name('site.install');
 // Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 
@@ -57,15 +59,15 @@ Route::get('admin', function () {
     } else {
         return abort(403);
     }
-})->name('admin')->middleware('auth');
+})->name('admin')->middleware(['auth', 'installcheck']);
 
 
 Route::get('site', function () {
         return view('administrateur/site');
 
-})->name('site')->middleware('auth');
+})->name('site')->middleware(['auth', 'installcheck']);
 
-Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel')->middleware('auth');
+Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel')->middleware(['auth', 'installcheck']);
 
 
 // Authentification

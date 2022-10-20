@@ -25,12 +25,12 @@
     <main class="container">
         @include('utils/flash-message')
 
-        <form class="form-control p-3" action="{{ route('sitepanel') }}" method="POST">
+        <form class="form-control p-3" action="{{ route('site.install') }}" method="POST">
             @csrf
             @foreach(config()->get('config.site') as $key => $value)
             {{ $key }}
             <div class="input-group mb-3">
-                <input class="form-control" type="text" value="{{ $value }}" name="{{ $key }}"><br>
+                <input class="form-control" type="text" value="{{ $value }}" name="{{ $key }}" required><br>
             </div>
             @endforeach
 
@@ -39,7 +39,7 @@
             @foreach(config()->get('config.medias') as $key => $value)
             {{ $key }}
             <div class="input-group mb-3">
-                <input class="form-control" type="text" value="{{ $value }}" name="{{ $key }}"><br>
+                <input class="form-control" type="text" value="{{ $value }}" name="{{ $key }}" required><br>
             </div>
             @endforeach
 
@@ -50,31 +50,31 @@
 
             Nom :
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="nom" placeholder="Votre nom"><br>
+                <input class="form-control" type="text" name="nom" placeholder="Votre nom" required><br>
             </div>
             Prenom : 
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="prenom" placeholder="Votre prénom"><br>
+                <input class="form-control" type="text" name="prenom" placeholder="Votre prénom" required><br>
             </div>
             Date de naissance
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="datenaissance" placeholder="Votre date de naissance"><br>
+                <input class="form-control" type="text" name="datenaissance" placeholder="Votre date de naissance" required><br>
             </div>
             Email :
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="email" placeholder="Votre email"><br>
+                <input class="form-control" type="text" name="email" placeholder="Votre email" required><br>
             </div>
             Téléphone :
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="tel" placeholder="Votre numéro de téléphone"><br>
+                <input class="form-control" type="text" name="tel" placeholder="Votre numéro de téléphone" required><br>
             </div>
             CIN :
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="CIN" placeholder="Votre CIN"><br>
+                <input class="form-control" type="text" name="CIN" placeholder="Votre CIN" required><br>
             </div>
             Mot de passe (Veuillez choisir un mot de passe sécurisé):
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="nom"><br>
+                <input class="form-control" type="text" name="mdp" placeholder="Votre mot de passe" required><br>
             </div>
 
             <br>
