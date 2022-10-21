@@ -27,11 +27,8 @@ Route::get('/', function () {
     $users = DB::table('users')->select('id', 'nom', 'prenom', 'age', 'email', 'tel', 'CIN')->get();
     $usercount = DB::table('users')->select('id', 'etat_payement', 'sport')->where('etat_payement', '=', true)->get();
 
-    if (config()->get('config.install') == false) {
-        return view('utils/install', compact('users', 'usercount'));
-    } else {
-        return view('acceuil', compact('users', 'usercount'));
-    }
+
+    return view('acceuil', compact('users', 'usercount'));
 })->name('acceuil');
 
 
@@ -42,7 +39,7 @@ Route::get('user', function () {
 
 Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
 Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
-Route::post('install-ui' , [InstallController::class, 'install'])->name('site.install');
+Route::post('install-ui', [InstallController::class, 'install'])->name('site.install');
 // Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 
@@ -63,8 +60,7 @@ Route::get('admin', function () {
 
 
 Route::get('site', function () {
-        return view('administrateur/site');
-
+    return view('administrateur/site');
 })->name('site')->middleware(['auth', 'installcheck']);
 
 Route::post('sitepanel', [SiteController::class, 'savechanges'])->name('sitepanel')->middleware(['auth', 'installcheck']);
