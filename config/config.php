@@ -4,7 +4,7 @@
 return [
     //Basics
 
-    'install' => true,
+    'install' => false,
 
     'site' =>[
         'Nom' => 'SportHall',
