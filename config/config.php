@@ -4,6 +4,8 @@
 return [
     //Basics
 
+    'install' => true,
+
     'site' =>[
         'Nom' => 'SportHall',
         'Description' => 'Notre site est un site web de salle de sport',

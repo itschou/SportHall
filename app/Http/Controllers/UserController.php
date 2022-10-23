@@ -22,12 +22,19 @@ class UserController extends Controller
             if ($request->input('ope') == 'paye') {
                 DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('etat_payement' => true));
                 return redirect()->route('admin')->withSuccess('Votre opération sur le client ' . $request->input('personmail') . ' a été effectué avec succès');
+
             } elseif ($request->input('ope') == 'nonpaye') {
                 DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('etat_payement' => false));
                 return redirect()->route('admin')->withSuccess('Votre opération sur le client ' . $request->input('personmail') . ' a été effectué avec succès');
+
             }elseif ($request->input('ope') == 'supprimerclient') {
                 DB::table('users')->where('email', '=', $request->input('personmail'))->delete();
                 return redirect()->route('admin')->withSuccess('Le client ' . $request->input('personmail') . ' a été supprimé avec succès');
+
+            }elseif ($request->input('ope') == 'resetmdp') {
+
+                DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('password' => Hash::make('123456')));
+                return redirect()->route('admin')->withSuccess('Nouveau mot de passe : (123456) pour le client' . $request->input('personmail'));
             }
 
             

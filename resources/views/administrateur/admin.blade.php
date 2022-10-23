@@ -76,7 +76,10 @@ $somme = 0;
                                 <div class="dropdown-divider"></div>
                                 <li>
                                     <button type="submit" name="ope" value="supprimerclient" class="btn btn-transparent text-center w-100 text-warning">Supprimer (Client)</button>
-
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="resetmdp" class="btn btn-transparent text-center w-100 text-primary">Réinitialiser le mot de passe</button>
                                 </li>
                                 
 
