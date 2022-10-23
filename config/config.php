@@ -3,7 +3,7 @@
 
 return [
     //Basics
-    'install' => 'false',
+    'install' => 'true',
     'basics' => [
         'nom' => 'SPORT HALL',
         'description' => 'Description de votre site web',
