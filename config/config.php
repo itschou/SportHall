@@ -13,7 +13,6 @@ return [
         'Email' => 'email@gmail.comddd'
     ],
 
->>>>>>> parent of 9783e32 (Index installation FINI + changement user blade)
     'basics' => [
         'nom' => 'SPORT HALL',
         'description' => 'Description de votre site web',
