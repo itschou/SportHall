@@ -22,7 +22,7 @@ $somme = 0;
 
 
 <main class="container">
-    @include('flash-message')
+    @include('utils/flash-message')
     <div class="container bg-dark text-center p-3 rounded">
         <div class="row">
             <div class="col">
@@ -78,6 +78,7 @@ $somme = 0;
                                     <button type="submit" name="ope" value="supprimerclient" class="btn btn-transparent text-center w-100 text-warning">Supprimer (Client)</button>
 
                                 </li>
+                                
 
                             </ul>
                         </li>
