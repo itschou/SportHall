@@ -4,7 +4,6 @@
 return [
     //Basics
     'install' => 'true',
-    'test' => 'changementiiii',
     'basics' => [
         'nom' => 'SPORT HALL',
         'description' => 'Description de votre site web',
