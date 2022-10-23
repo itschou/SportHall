@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use App\Models\User;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
 
 class InstallController extends Controller
 {
-
-
     public function install(Request $request){
-
-        
 
         // Input administrateur
 
@@ -47,15 +43,10 @@ class InstallController extends Controller
             'sport' => 'Judo',
             'role' => 'admin',
             'password' => Hash::make($request->input(admincases[6])),
-            'confirmation_inscription' => true,
-            'etat_payement' => true
+            'confirmation_inscription' => true
         ]);
 
         Config::write('config.install' , true);
-
-        
-
-        return redirect()->route('acceuil')->withSuccess('Votre configuration du site a bien été enregistré !');
 
 
     }

@@ -4,10 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
-
-
 
 class InstallChecker
 {
@@ -21,16 +17,12 @@ class InstallChecker
     public function handle(Request $request, Closure $next)
     {
 
-        $route = Route::current();
-        $name = $route->getName();
-        
-        if (config()->get('config.install') == false && $name != 'site.install') {
-
+        if(config()->get('config.install') == false){
             return response()->view('utils/install');
-
-        } else {
-
+        }else{
             return $next($request);
         }
+        
+
     }
 }
