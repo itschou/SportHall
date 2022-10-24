@@ -1,3 +1,15 @@
+body {
+  background-color: config('config.color.background');
+}
+
+.nomSiteFont {
+
+  font-family: Inter;
+  font-weight: 700;
+
+
+}
+
 .counter {
   background-color: #f5f5f5;
   padding: 20px 0;
@@ -65,6 +77,7 @@ h3.welcome {
   transform: scale(0.94);
   animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
 }
+
 @keyframes scale {
   100% {
     transform: scale(1);

@@ -13,16 +13,38 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
+
+    <!-- Fonts Link -->
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
     <script type="text/javascript" src="{{asset('/js/Compteur.js')}}"></script>
     <script type="text/javascript" src="{{asset('/js/TextAnimations.js')}}"></script>
 
+    <style>
+        body {
+            background-color: <?php echo $backgroundColor ?>;
+        }
 
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5 sticky-top" style="background-color: #e3f2fd;">
+        .generalNavBar {
+            background-color: <?php echo $primaryColor ?>;
+        }
+
+        .generalFooter {
+            background-color: <?php echo $primaryColor ?>;
+        }
+
+        .generalFooterDown {
+            background-color: <?php echo $backgroundColor ?>;
+        }
+    </style>
+
+
+    <nav class="generalNavBar navbar navbar-dark navbar-expand-lg mb-5 sticky-top">
         <div class="container">
-            <a class="navbar-brand mr-auto" href="{{ route('acceuil') }}">{{ config()->get('config.site.Nom') }}</a>
+            <a class="navbar-brand mr-auto text-uppercase nomSiteFont" href="{{ route('acceuil') }}">{{ config()->get('config.site.Nom') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,12 +66,13 @@
 
                 <ul class="navbar-nav ms-auto">
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ config()->get('config.basics.login') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register-user') }}">{{ config()->get('config.basics.signup') }}</a>
-                    </li>
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-home me-3"></i>MON COMPTE 
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('login') }}">{{ config()->get('config.basics.login') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('register-user') }}">{{ config()->get('config.basics.signup') }}</a></li>
+                    </ul>
                     @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,10 +81,14 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('user') }}">Profile</a></li>
                             @if(auth()->user()->role == "admin")
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Administrateur</a></li>
                             <li><a class="dropdown-item" href="{{ route('site') }}">Gestion du site</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             @endif
                             <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a></li>
                         </ul>
@@ -85,28 +112,7 @@
 
     <br><br>
     <!-- Footer -->
-    <footer class="text-center text-lg-start bg-dark text-light mt-auto">
-        <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-2 border-bottom">
-            <!-- Left -->
-            <div class="me-5 d-none d-lg-block">
-                <span> {{ config()->get('config.basics.medias-message')}} </span>
-            </div>
-            <!-- Left -->
-
-            <!-- Right -->
-            <div>
-                @foreach(config('config.medias') as $key => $value)
-                @if($value != null)
-                <a href="{{ $value }}" class="me-4 text-reset">
-                    <i>{{ $key }}</i>
-                </a>
-                @endif
-                @endforeach
-            </div>
-            <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
+    <footer class="generalFooter text-center text-lg-start text-light mt-auto">
 
         <!-- Section: Links  -->
         <section class="">
@@ -116,25 +122,38 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>{{ config()->get('config.site.Nom')}}
+                        <h6 class="text-uppercase fw-bold mb-4 text-decoration-underline">
+                            LIENS UTILS
                         </h6>
-                        <p>
-                            {{ config()->get('config.site.Description')}}
-                        </p>
+                        <ul style="list-style: none;">
+                            <a class="nav-link text-white" href="{{ route('login') }}">
+                                <li>{{ config()->get('config.basics.login') }}</li>
+                            </a>
+                            <a class="nav-link text-white" href="{{ route('register-user') }}">
+                                <li>{{ config()->get('config.basics.signup') }}</li>
+                            </a>
+                        </ul>
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fa fa-home me-3"></i>{{config()->get('config.site.Adresse')}}</p>
-                        <p>
-                            <i class="fa fa-envelope me-3"></i>
-                            {{config()->get('config.site.Email')}}
-                        </p>
-                        <p><i class="fa fa-phone me-3"></i>{{config()->get('config.site.Téléphone')}}</p>
+                        <h6 class="text-uppercase fw-bold mb-4 text-decoration-underline">Contact</h6>
+                        <ul style="list-style: none;">
+                            @foreach(config('config.medias') as $key => $value)
+                            @if($value != null)
+                            <li>
+                                <a href="{{ $value }}" class="me-4 text-reset">
+                                    <i class="fa fa-{{ $key }} me-3 text-capitalize"> {{$key}} (Clique ici)</i>
+                                </a>
+                            </li><br>
+                            @endif
+                            @endforeach
+                            <li><i class="fa fa-home me-3"> {{config()->get('config.site.Adresse')}}</i></li><br>
+                            <li><i class="fa fa-envelope me-3"> {{config()->get('config.site.Email')}}</i></li><br>
+                            <li><i class="fa fa-phone me-3"> {{config()->get('config.site.Téléphone')}}</i></li><br>
+                        </ul>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -144,9 +163,8 @@
         <!-- Section: Links  -->
 
         <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="#"> {{ config()->get('config.site.Nom')}} </a>
+        <div class="text-center p-2 generalFooterDown text-uppercase">
+            © 2021 COPYRIGHT {{ config()->get('config.site.Nom')}}
         </div>
         <!-- Copyright -->
     </footer>

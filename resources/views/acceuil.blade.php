@@ -2,9 +2,8 @@
 @section('content')
 
 
-<main class="">
+<main>
 
-    <!-- <h2 class="bg-dark text-light p-3 text-center border border-dark border-4 rounded-pill">Bienvenue sur {{ config()->get('config.site.Nom')}}</h2> -->
     <div class="container-fluid main px-0">
         <br>
         <h1 class="welcome text-center">
