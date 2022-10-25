@@ -70,7 +70,7 @@
         <div class="row">
 
             <div class="col-7 text-center">
-                <h1 class="FontInter text-white text-center">LA MEILLEUR SALLE DE SPORT POUR LES MEILLEURS CLIENTS</h1><br><br>
+                <h1 class="FontInter text-white text-center p-3">LA MEILLEUR SALLE DE SPORT POUR LES MEILLEURS CLIENTS</h1><br><br>
                 <button class="btn btn-lg rounded-pill text-white FontInter btnsinscrirediv2" style="background-color: #B800B8;">S'INSCRIRE</button>
             </div>
             <div class="col">
