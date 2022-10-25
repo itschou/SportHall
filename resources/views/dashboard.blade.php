@@ -20,7 +20,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 bbs">
-    <script type="text/javascript" src="{{asset('/js/Compteur.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/js/General.js')}}"></script>
     <script type="text/javascript" src="{{asset('/js/TextAnimations.js')}}"></script>
 
     <style>
@@ -28,9 +28,9 @@
             background-color: <?php echo $backgroundColor ?>;
         }
 
-        .generalNavBar {
+        /* .generalNavBar {
             background-color: <?php echo $primaryColor ?>;
-        }
+        } */
 
         .generalFooter {
             background-color: <?php echo $primaryColor ?>;
@@ -39,10 +39,15 @@
         .generalFooterDown {
             background-color: <?php echo $backgroundColor ?>;
         }
+
+        .sticky-top.scrolled {
+            background-color: <?php echo $primaryColor ?> !important;
+            transition: background-color 300ms linear;
+        }
     </style>
 
 
-    <nav class="generalNavBar navbar navbar-dark navbar-expand-lg mb-5 sticky-top">
+    <nav class="generalNavBar navbar navbar-dark navbar-expand-lg mb-5 sticky-top shadow-5-strong">
         <div class="container">
             <a class="navbar-brand mr-auto text-uppercase nomSiteFont" href="{{ route('acceuil') }}">{{ config()->get('config.site.Nom') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,20 +67,18 @@
                 <ul class="navbar-nav ms-auto">
                     @guest
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span style="background-color: rgba(77, 168, 218, 0.3)">
-                            <i class="fa fa-home me-3"></i>MON COMPTE 
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                        <li><a class="dropdown-item" href="{{ route('login') }}">{{ config()->get('config.basics.login') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ route('register-user') }}">{{ config()->get('config.basics.signup') }}</a></li>
-                    </ul>
+                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span style="background-color: rgba(77, 168, 218, 0.3)"><i class="fa fa-user-circle me-3"></i>MON COMPTE </span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <li><a class="dropdown-item" href="{{ route('login') }}"><i class="fa fa-sign-in me-3"></i>{{ config()->get('config.basics.login') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register-user') }}"><i class="fa fa-user-plus me-3"></i>{{ config()->get('config.basics.signup') }}</a></li>
+                        </ul>
                     </li>
                     @else
                     <li class="nav-item dropdown">
-                        <a class="nav-link rounded text-dark " style="background-color: <?php echo $secondaryColor?>;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bienvenue {{ auth()->user()->prenom }}  @if(auth()->user()->role == "admin") <i class="fa fa-sort"></i>@endif
+                        <a class="nav-link rounded text-dark " style="background-color: #84C9F2;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bienvenue {{ auth()->user()->prenom }} @if(auth()->user()->role == "admin") <i class="fa fa-sort"></i>@endif
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('user') }}"><i class="fa fa-user"> Profile</i></a></li>
@@ -83,13 +86,13 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('admin') }}"><i class="fa fa-lock"> Administrateur</i></a></li>
-                            <li><a class="dropdown-item" href="{{ route('site') }}"><I class="fa fa-cogs"> Gestion du site</I></a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin') }}"><i class="fa fa-lock"> </i> Administrateur</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site') }}"><I class="fa fa-cogs"> </I> Paramètres</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             @endif
-                            <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}">{{ config()->get('config.basics.logout') }}</a></li>
+                            <li class="nav-item"><a class="dropdown-item text-danger" href="{{ route('signout') }}"><i class="fa  fa-sign-out"> {{ config()->get('config.basics.logout') }}</i></a></li>
                         </ul>
                     </li>
 
@@ -170,3 +173,8 @@
 </body>
 
 </html>
+
+
+<script>
+    
+</script>

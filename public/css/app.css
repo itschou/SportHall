@@ -7,8 +7,57 @@ body {
   font-family: Inter;
   font-weight: 700;
 
+}
+
+.FontInter {
+
+  font-family: Inter;
+  font-weight: 700;
 
 }
+
+/* Boutton s'inscrire div 2 */
+
+.btnsinscrirediv2{
+  transition: transform 2s;
+}
+
+.btnsinscrirediv2:hover{
+
+  transform: scale(1.2);
+  
+
+
+}
+
+
+/* Boutton s'inscrire div 2 */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+/* ---------------------------------------- */
+
+h1.front{
+  font-family: Inter;
+  font-weight: 700;
+  text-align: justify;
+}
+
+h2{
+  font-family: Inter;
+  font-weight: 700;
+  text-align: justify;
+}
+
+h2.stats{
+  text-align: justify;
+  font-family: Inter;
+  font-weight: 700;
+}
+
+
+
+/* --------------------------------------- */
 
 .counter {
   background-color: #f5f5f5;
