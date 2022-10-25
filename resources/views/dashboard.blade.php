@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet/less" href="{{ asset('scss/colors.scss') }}">
-    <link rel="icon" href="{{ url('/favicon.ico') }}">
+    <link rel="icon" href="{{ url('css/icon.jpg') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -67,8 +67,8 @@
                 <ul class="navbar-nav ms-auto">
                     @guest
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span style="background-color: rgba(77, 168, 218, 0.3)"><i class="fa fa-user-circle me-3"></i>MON COMPTE </span>
+                        <a class="nav-link dropdown-toggle rounded p-2" style="background-color: #84C9F2;" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span><i class="fa fa-user-circle me-3"></i>MON COMPTE </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                             <li><a class="dropdown-item" href="{{ route('login') }}"><i class="fa fa-sign-in me-3"></i>{{ config()->get('config.basics.login') }}</a></li>

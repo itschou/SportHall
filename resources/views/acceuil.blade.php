@@ -2,14 +2,14 @@
 @section('content')
 
 
-
+<br><br><br>
 <main>
 
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <h2 class="text-white">NOTRE SALLE DE SPORT</h2>
-                <p class="text-white text-justify">{{ config()->get('config.site.Description') }}</p>
+                <p class="text-white text-justify" style="width: 60%">{{ config()->get('config.site.Description') }}</p>
             </div>
             <div class="col-6">
                 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="100%" height="100%" viewBox="0 0 892.34963 579.10966" xmlns:xlink="http://www.w3.org/1999/xlink">
