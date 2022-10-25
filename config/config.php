@@ -5,7 +5,7 @@ return [
 
     'color' => [
         'primary' => '#4DA8DA',
-        'secondary' => '',
+        'secondary' => '#84C9F2',
         'background' => '#12232E'
     ],
 

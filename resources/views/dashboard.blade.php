@@ -49,9 +49,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-
-                <!-- Nav Links -->
-
                 <ul class="nav nav-pills nav-fill">
                     @foreach(config('config.links') as $key => $value)
 
@@ -60,32 +57,34 @@
                     @endforeach
                 </ul>
 
-                <!-- Nav Links End -->
-
                 <!-- Login , Register and Logout Links -->
 
                 <ul class="navbar-nav ms-auto">
                     @guest
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-home me-3"></i>MON COMPTE 
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span style="background-color: rgba(77, 168, 218, 0.3)">
+                            <i class="fa fa-home me-3"></i>MON COMPTE 
+                        </span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                         <li><a class="dropdown-item" href="{{ route('login') }}">{{ config()->get('config.basics.login') }}</a></li>
                         <li><a class="dropdown-item" href="{{ route('register-user') }}">{{ config()->get('config.basics.signup') }}</a></li>
                     </ul>
+                    </li>
                     @else
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bienvenue {{ auth()->user()->prenom }} @if(auth()->user()->role == "admin") <span class="text-danger">[ADMIN]</span>@endif
+                        <a class="nav-link rounded text-dark " style="background-color: <?php echo $secondaryColor?>;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bienvenue {{ auth()->user()->prenom }}  @if(auth()->user()->role == "admin") <i class="fa fa-sort"></i>@endif
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('user') }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user') }}"><i class="fa fa-user"> Profile</i></a></li>
                             @if(auth()->user()->role == "admin")
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('admin') }}">Administrateur</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site') }}">Gestion du site</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin') }}"><i class="fa fa-lock"> Administrateur</i></a></li>
+                            <li><a class="dropdown-item" href="{{ route('site') }}"><I class="fa fa-cogs"> Gestion du site</I></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
