@@ -3,6 +3,8 @@
 
 return [
 
+    'install' => true,
+
     'color' => [
         'primary' => '#4DA8DA',
         'secondary' => '#30b1ff',
@@ -12,7 +14,7 @@ return [
 
     //Basics
 
-    'install' => true,
+    
 
     'site' => [
         'Nom' => 'SportHall',
@@ -36,6 +38,11 @@ return [
         'noclient' => 'Désolé mais vous n\'êtes pas encore un client pour consulter cette page !'
 
     ],
+
+
+
+
+    
 
 
 

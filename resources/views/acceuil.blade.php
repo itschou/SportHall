@@ -142,6 +142,14 @@
         </div>
     </div>
 
+    <div class="container-fluid" style="background-color: <?php echo $backgroundColor ?>;">
+
+    <div class="row">
+
+    </div>
+
+    </div>
+
 
 
 </main>
