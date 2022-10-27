@@ -1,11 +1,15 @@
-@extends('dashboard')
+@extends('layouts/dashboard')
 @section('content')
 @stack('styles')
 <br><br><br><br><br>
 <main class="signup-form">
-    @include('utils/flash-message')
+    
     <div class="container register">
+        
         <div class="row justify-content-center">
+        <div class="container w-50">
+            @include('utils/flash-message')
+        </div>
             <div class="col-md-8">
                 <div class="card">
                     <h3 class="card-header text-center">{{ config()->get('config.basics.signup') }}</h3>

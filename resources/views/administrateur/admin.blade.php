@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('administrateur/admindashboard')
 @section('content')
 
 @php
@@ -21,9 +21,9 @@ $somme = 0;
 
 
 
-<main class="container">
+<main class="p-4">
     @include('utils/flash-message')
-    <div class="container bg-dark text-center p-3 rounded">
+    <div class="container text-center p-3 rounded" style="background-color: <?php echo $primaryColor ?>;">
         <div class="row">
             <div class="col">
                 <h4 class="text-light">Clients actuelle: {{ count($usercount) }}</h4>
@@ -106,7 +106,7 @@ $somme = 0;
     </div>
 
     <br>
-    <div class="container">
+    <div class="container collapse" id="clientspaye">
 
         <h1 class="text-center text-dark">Liste des clients qui n'ont pas payé.</h1><br>
 
@@ -143,11 +143,8 @@ $somme = 0;
         </table>
     </div>
 
-    <br><br>
-    <hr>
-    <br><br>
 
-    <div class="container">
+    <div class="container collapse" id="clientsnonpaye">
 
         <h1 class="text-center text-dark">Liste des clients qui ont payé.</h1><br>
 

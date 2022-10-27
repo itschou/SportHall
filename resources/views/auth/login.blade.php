@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts/dashboard')
 @section('content')
 @stack('styles')
 <br><br><br><br><br><br><br><br><br><br><br>

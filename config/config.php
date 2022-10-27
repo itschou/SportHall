@@ -5,8 +5,8 @@ return [
 
     'color' => [
         'primary' => '#4DA8DA',
-        'secondary' => '#007CC7',
-        'secondarybuttons' => '#84C9F2',
+        'secondary' => '#30b1ff',
+        'secondarybuttons' => '#97d8ff',
         'background' => '#12232E',
         ''
     ],
@@ -60,5 +60,14 @@ return [
     'sports' => [
         'musculation' => '1000',
         'Judo' => '600'
+    ],
+
+
+    'admin' => [
+        'GESTION' => [
+            'Administrateur' => 'admin',
+            'Paramètres' => 'site',
+            'Profile' => 'user'
+        ]
     ]
 ];

@@ -1,11 +1,31 @@
-// Navbar Scroll
-
 $(function() {
+    
+    // Navbar Scroll
+
     $(document).scroll(function() {
         var $nav = $(".sticky-top");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
     });
+
+
+
+    // Animated Flash Message
+
+
+    setTimeout(function(){
+        $('.flashanimated').slideUp(600);
+    }, 1900);
+
+
+    $('#clientspayebtn').click(function(){
+        $('#clientspaye').collapse('toggle');
+    });
+    $('#clientsnonpayebtn').click(function(){
+        $('#clientsnonpaye').collapse('toggle');
+    });
 });
+
+
 
 
 // Sécurité d'informations

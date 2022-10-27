@@ -1,8 +1,8 @@
-@extends('dashboard')
+@extends('administrateur/admindashboard')
 @section('content')
 
 
-<main class="container">
+<main class="container p-4">
     @include('utils/flash-message')
 
     <form class="form-control p-3" action="{{ route('sitepanel') }}" method="POST">
