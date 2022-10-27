@@ -65,7 +65,7 @@
                     <ul class="navbar-nav ms-auto">
                         @guest
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle rounded p-2" style="background-color: #84C9F2;" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle rounded p-2" style="background-color: <?php echo $secondaryColorbuttons ?>;" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span><i class="fa fa-user-circle me-3"></i>MON COMPTE </span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
@@ -75,8 +75,8 @@
                         </li>
                         @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link rounded text-dark " style="background-color: #84C9F2;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Bienvenue {{ auth()->user()->prenom }} @if(auth()->user()->role == "admin") <i class="fa fa-sort"></i>@endif
+                            <a class="nav-link rounded text-dark " style="background-color: <?php echo $secondaryColorbuttons ?>;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('/storage/profile/'.Auth::user()->image) }}" width="30" height="30" class="rounded-circle"> Bienvenue {{ auth()->user()->prenom }} @if(auth()->user()->role == "admin") <i class="fa fa-sort"></i>@endif
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('user') }}"><i class="fa fa-user"> Profile</i></a></li>
@@ -109,7 +109,6 @@
     @yield('content')
     <!-- Contenu ajouté dans les pages -->
 
-    <br><br>
     <!-- Footer -->
     <footer class="generalFooter text-center text-lg-start text-light mt-auto">
         <!-- Section: Links  -->

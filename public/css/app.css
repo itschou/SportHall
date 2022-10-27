@@ -20,6 +20,7 @@ body {
 
 .btnsinscrirediv2{
   transition: transform 2s;
+  font-size: 300%;
 }
 
 .btnsinscrirediv2:hover{

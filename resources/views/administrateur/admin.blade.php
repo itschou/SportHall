@@ -45,7 +45,7 @@ $somme = 0;
     <br><br>
 
 
-    <div class="container form-control">
+    <div class="container form-control shadow bg-body rounded">
         <h5 class="text-center text-primary">Opérations sur client</h5><br>
         <!-- <h5 class="text-center text-primary"></h5><br> -->
 
@@ -64,7 +64,7 @@ $somme = 0;
                     <div class="col">
                         <li class="nav-item dropdown navbar-nav ">
                             <button class="btn btn-secondary nav-link dropdown-toggle text-center" href="#" id="operations" role="button" data-bs-toggle="dropdown" aria-expanded="false">Opérations</button>
-                            <ul class="dropdown-menu unstyled p-2 mx-2" aria-labelledby="operations">
+                            <ul class="dropdown-menu unstyled p-2 mx-2 shadow bg-body rounded" aria-labelledby="operations">
 
                                 <li>
                                     <button type="submit" name="ope" value="paye" class="btn btn-transparent text-center w-100 text-success">Payé</button><br>
@@ -101,6 +101,8 @@ $somme = 0;
             </form>
 
         </div>
+
+        
         <br>
         <br>
     </div>
@@ -178,6 +180,25 @@ $somme = 0;
 
         </table>
     </div>
+
+    <div class="container bg-light p-3 text-center collapse" id="themechange">
+
+            <form action="{{ route('changeColor') }}" method="POST">
+                @csrf
+
+                <h3>Changer la couleur de votre site</h3>
+                <select name="couleurs" id="themechoose" class="form-control">
+                    <option value="bleu"><span class="bg-primary">Bleu</span></option>
+                    <option value="orange"><span class="bg-primary">Orange</span></option>
+                    <option value="vert"><span class="bg-success">Vert</span></option>
+                    <option value="rouge"><span class="bg-danger">Rouge</span></option>
+                </select>
+
+                <br><button type="submit" class="btn btn-success">Confirmer</button>
+
+            </form>
+
+        </div>
 
 
 </main>

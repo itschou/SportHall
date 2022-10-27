@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $backgroundColor = Config::get('config.color.background');
         $primaryColor = Config::get('config.color.primary');
         $secondaryColor = Config::get('config.color.secondary');
-        $secondaryColorbuttons = Config::get('config.color.secondaryColorbuttons');
+        $secondaryColorbuttons = Config::get('config.color.secondarybuttons');
         
         view()->share('backgroundColor', $backgroundColor);
         view()->share('primaryColor', $primaryColor);

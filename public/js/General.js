@@ -14,7 +14,7 @@ $(function() {
 
     setTimeout(function(){
         $('.flashanimated').slideUp(600);
-    }, 1900);
+    }, 2500);
 
 
     $('#clientspayebtn').click(function(){
@@ -22,6 +22,9 @@ $(function() {
     });
     $('#clientsnonpayebtn').click(function(){
         $('#clientsnonpaye').collapse('toggle');
+    });
+    $('#themechangebtn').click(function(){
+        $('#themechange').collapse('toggle');
     });
 });
 

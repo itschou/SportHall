@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\InstallController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPaiementController;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,8 @@ Route::get('user', function () {
 Route::post('user-operations', [UserController::class, 'operations'])->name('user.operations');
 Route::post('user-changepass', [UserController::class, 'changePass'])->name('user.changepass');
 Route::post('install-ui' , [InstallController::class, 'install'])->name('site.install');
+Route::post('changecolor', [ThemeController::class, 'colors'])->name('changeColor');
+Route::post('changeimageprofil', [UserController::class, 'uploadimage'])->name('changeimageprofil');
 // Route::post('user-select', [UserController::class, 'select'])->name('user.select');
 
 

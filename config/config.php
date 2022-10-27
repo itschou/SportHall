@@ -7,8 +7,7 @@ return [
         'primary' => '#4DA8DA',
         'secondary' => '#30b1ff',
         'secondarybuttons' => '#97d8ff',
-        'background' => '#12232E',
-        ''
+        'background' => '#12232E'
     ],
 
     //Basics
