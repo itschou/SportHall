@@ -58,7 +58,7 @@
             </div>
             Date de naissance
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="datenaissance" placeholder="Votre date de naissance" required><br>
+                <input class="form-control" type="date" name="datenaissance" placeholder="Votre date de naissance" required><br>
             </div>
             Email :
             <div class="input-group mb-3">

@@ -26,8 +26,6 @@ return [
     ],
 
     'basics' => [
-        'nom' => 'SPORT HALL',
-        'description' => 'Description de votre site web',
         'no-account' => 'Vous n\'avez pas de compte ?',
         'have-account' => 'Vous avez déjà un compte ?',
         'remember' => 'Se souvenir de moi',
@@ -42,7 +40,7 @@ return [
 
 
 
-    
+
 
 
 
