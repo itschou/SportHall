@@ -9,6 +9,10 @@ body {
 
 }
 
+.justifytext{
+  text-align: justify;
+}
+
 .FontInter {
 
   font-family: Inter;

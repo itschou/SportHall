@@ -32,6 +32,14 @@ class UserController extends Controller
 
                 DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('password' => Hash::make('123456')));
                 return redirect()->route('admin')->withSuccess('Nouveau mot de passe : (123456) pour le client' . $request->input('personmail'));
+            } elseif ($request->input('ope') == 'addadmin') {
+
+                DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('role' => 'admin'));
+                return redirect()->route('admin')->withSuccess('Vous venez de donner le role Administrateur au client : ' . $request->input('personmail'));
+            } elseif ($request->input('ope') == 'deladmin') {
+
+                DB::table('users')->where('email', '=', $request->input('personmail'))->update(array('role' => 'client'));
+                return redirect()->route('admin')->withSuccess('Vous venez de donner le role client au client : ' . $request->input('personmail'));
             }
         } else {
 

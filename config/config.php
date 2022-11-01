@@ -55,8 +55,7 @@ return [
     // nav links
 
     'links' => [
-        'Qui somme nous ?' => "admin",
-        'Nous rejoindre' => "signout"
+        
     ],
 
     // Sports liste

@@ -91,6 +91,18 @@
                             <li><a class="dropdown-item" href="{{ route('register-user') }}"><i class="fa fa-user-plus me-3"></i>{{ config()->get('config.basics.signup') }}</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link rounded p-2 text-light" href="#" id="notifications" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h4><i class="fa fa-bell"></i></h4>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="notifications">
+                            @foreach(DB::table('messages')->select('message', 'created_at')->get() as $mess)
+                            <li class="bg-secondary mb-1 text-center p-1"><div class="container"><h6 class="text-light FontInter"> Nouveau message </h6>  <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif</div></li>
+                            @endforeach
+
+                        </ul>
+                    </li>
+
                     @else
                     <li class="nav-item dropdown">
                         <a class="nav-link rounded text-dark " style="background-color: <?php echo $secondaryColorbuttons ?>;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

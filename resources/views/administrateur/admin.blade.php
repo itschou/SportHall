@@ -59,7 +59,7 @@ $somme = 0;
                     <div class="col-8">
                         <input type="text" placeholder="email" class="form-control w-100 float-start text-center" name="personmail" required>
                     </div>
-                    
+
 
                     <div class="col">
                         <li class="nav-item dropdown navbar-nav ">
@@ -81,14 +81,21 @@ $somme = 0;
                                 <li>
                                     <button type="submit" name="ope" value="resetmdp" class="btn btn-transparent text-center w-100 text-primary">Réinitialiser le mot de passe</button>
                                 </li>
-                                
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <button type="submit" name="ope" value="addadmin" class="btn btn-transparent text-center w-100" style="color: red;">Ajouter Admin</button>
+                                </li>
+                                <li>
+                                    <button type="submit" name="ope" value="deladmin" class="btn btn-transparent text-center w-100" style="color: red;">Supprimer Admin</button>
+                                </li>
+
 
                             </ul>
                         </li>
 
                     </div>
-                    
-                    
+
+
                 </div>
 
 
@@ -102,7 +109,7 @@ $somme = 0;
 
         </div>
 
-        
+
         <br>
         <br>
     </div>
@@ -183,22 +190,35 @@ $somme = 0;
 
     <div class="container bg-light p-3 text-center collapse" id="themechange">
 
-            <form action="{{ route('changeColor') }}" method="POST">
-                @csrf
+        <form action="{{ route('changeColor') }}" method="POST">
+            @csrf
 
-                <h3>Changer la couleur de votre site</h3>
-                <select name="couleurs" id="themechoose" class="form-control">
-                    <option value="bleu"><span class="bg-primary">Bleu</span></option>
-                    <option value="orange"><span class="bg-primary">Orange</span></option>
-                    <option value="vert"><span class="bg-success">Vert</span></option>
-                    <option value="rouge"><span class="bg-danger">Rouge</span></option>
-                </select>
+            <h3>Changer la couleur de votre site</h3>
+            <select name="couleurs" id="themechoose" class="form-control">
+                <option value="bleu"><span class="bg-primary">Bleu</span></option>
+                <option value="orange"><span class="bg-primary">Orange</span></option>
+                <option value="vert"><span class="bg-success">Vert</span></option>
+                <option value="rouge"><span class="bg-danger">Rouge</span></option>
+            </select>
 
-                <br><button type="submit" class="btn btn-success">Confirmer</button>
+            <br><button type="submit" class="btn btn-success">Confirmer</button>
 
-            </form>
+        </form>
 
-        </div>
+    </div>
+
+    <div class="container bg-light p-3 text-center">
+
+        <form action="{{ route('addmessage') }}" method="POST">
+
+            @csrf
+            <!-- <textarea name="annoncemessage" rows="4" cols="50"></textarea> -->
+            <input type="text" name="annoncemessage">
+            <button type="submit" class="btn btn-success">Envoyer</button>
+
+        </form>
+
+    </div>
 
 
 </main>
