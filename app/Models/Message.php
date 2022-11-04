@@ -19,9 +19,7 @@ class Message extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'message',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
