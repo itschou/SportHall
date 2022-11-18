@@ -21,6 +21,10 @@ class Message extends Model
      */
     protected $guarded = [];
 
+    public function delMessage($id){
+        $this->where('id',  '=' , $id)->delete();
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

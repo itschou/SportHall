@@ -97,7 +97,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="notifications">
                             @foreach(DB::table('messages')->select('message', 'created_at')->get() as $mess)
-                            <li class="bg-secondary mb-1 text-center p-1"><div class="container"><h6 class="text-light FontInter"> Nouveau message </h6>  <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif</div></li>
+                            <li class="bg-secondary mb-1 text-center p-1">
+                                <div class="container">
+                                    <h6 class="text-light FontInter"> Nouveau message </h6>
+                                    <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif
+                                </div>
+                            </li>
                             @endforeach
 
                         </ul>
@@ -128,7 +133,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="notifications">
                             @foreach(DB::table('messages')->select('message', 'created_at')->get() as $mess)
-                            <li class="bg-secondary mb-1 text-center p-1"><div class="container"><h6 class="text-light FontInter"> Nouveau message </h6>  <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif</div></li>
+                            <li class="bg-secondary mb-1 text-center p-1">
+                                <div class="container">
+                                    <h6 class="text-light FontInter"> Nouveau message </h6>
+                                    <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif
+                                </div>
+                            </li>
                             @endforeach
 
                         </ul>
@@ -148,6 +158,21 @@
 
     <!-- Contenu ajouté dans les pages -->
     <div style="display: none;"></div>
+    <div style="display: none;" class="">
+
+        <ul class="dropdown-menu" aria-labelledby="notifications">
+            @foreach(DB::table('messages')->select('message', 'created_at')->get() as $mess)
+            <li class="bg-secondary mb-1 text-center p-1">
+                <div class="container">
+                    <h6 class="text-light FontInter"> Nouveau message </h6>
+                    <p class="justifytext">{{ $mess->message }}</p> @if(\Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now()) != 0) <p style="font-size: 10px;">Posté depuis : {{ \Carbon\Carbon::parse($mess->created_at)->diffInDays(\Carbon\Carbon::now())}} jour(s)</p> @else <p style="font-size: 10px;">Vient d'être posté</p> @endif
+                </div>
+            </li>
+            @endforeach
+
+        </ul>
+
+    </div>
     @yield('content')
     <!-- Contenu ajouté dans les pages -->
 
@@ -225,7 +250,7 @@
                             @if($value != null)
                             <li>
                                 <a href="{{ $value }}" class="me-4 text-reset">
-                                    <i class="fa fa-{{ $key }} me-3 text-capitalize"> {{$key}} (Clique ici)</i>
+                                    <i class="fa fa-{{ $key }} me-3 text-capitalize"></i>
                                 </a>
                             </li><br>
                             @endif

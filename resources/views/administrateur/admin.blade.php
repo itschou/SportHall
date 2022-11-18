@@ -3,6 +3,7 @@
 
 @php
 use App\Models\User;
+use App\Models\Message;
 
 $somme = 0;
 
@@ -217,6 +218,13 @@ $somme = 0;
             <button type="submit" class="btn btn-success">Envoyer</button>
 
         </form>
+
+    </div>
+
+    <div class="container bg-light p-3 text-center">
+        <!-- @foreach(Message::all() as $messagee)
+            <p>$messagee->message</p>
+        @endforeach -->
 
     </div>
 
